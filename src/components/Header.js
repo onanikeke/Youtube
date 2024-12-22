@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       <div className="col-span-8 flex items-center justify-center">
         <input
-          className=" w-1/2 border-[1px] border-gray-400 py-1 focus:ring-1  focus:ring-blue-400 rounded-l-full px-2 outline-none"
+          className=" w-1/2 border-[1px] border-gray-400 py-1 focus:ring-1  focus:border-blue-800 rounded-l-full px-2 outline-none"
           type="text"
           placeholder="Search"
         />

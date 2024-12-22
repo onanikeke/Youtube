@@ -14,11 +14,11 @@ import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  console.log(isMenuOpen);
+  // console.log(isMenuOpen);
   return (
     isMenuOpen && (
-      <div className="w-36 m-2 ">
-        <ul className="text-sm font-medium ">
+      <div className="w-48 m-2 ">
+        <ul className="text-sm font-normal ">
           <li className="flex items-center gap-4 text-xl py-2 px-2 rounded-xl hover:bg-[#868484] hover:cursor-pointer">
             <IoMdHome />
             <p className="text-sm">Home</p>
