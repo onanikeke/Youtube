@@ -1,10 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="text-center text-red-500">
-      <h1>Namastey React...</h1>
+    <div className="">
+      <Header />
+      <Body />
     </div>
   );
 }
