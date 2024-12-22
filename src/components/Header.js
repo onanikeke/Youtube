@@ -3,13 +3,20 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { MdKeyboardVoice } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleTogglemenu = () => {
+    dispatch(toggleMenu());
+  };
   return (
-    <div className="grid grid-flow-col p-2 m-2 shadow-lg ">
+    <div className="grid grid-flow-col p-4 my-2 -mt-2 shadow-lg ">
       <div className="flex col-span-2 items-center gap-4">
         <img
-          className="h-6"
+          onClick={handleTogglemenu}
+          className="h-6 hover:cursor-pointer"
           alt="hem"
           src="https://cdn-icons-png.flaticon.com/128/7710/7710488.png"
         />
