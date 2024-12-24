@@ -9,10 +9,10 @@ const VideoCard = ({ videoInfo }) => {
   let { viewCount, likeCount } = videoInfo?.statistics;
   viewCount = viewCount / 1000000;
   return (
-    <div className="text-black m-2 py-2 hover:scale-95 ease-in-out duration-500 hover:cursor-pointer">
-      <div className="w-[380px] h-72 rounded-lg border-black">
+    <div className="text-black m-2 py-2  ease-in-out duration-500 hover:cursor-pointer">
+      <div className="w-[280px] h-64 rounded-lg border-black">
         <img
-          className="w-full h-[200px] overflow-hidden object-cover rounded-lg"
+          className="w-full h-[150px] overflow-hidden object-cover rounded-lg"
           src={thumbnails.medium.url}
           alt={localized.title}
         />
@@ -23,5 +23,13 @@ const VideoCard = ({ videoInfo }) => {
     </div>
   );
 };
+
+// export const HighOrderComponent = ({ info }) => {
+//   return (
+//     <div className="border-2 border-red-500">
+//       <VideoCard videoInfo={info} />
+//     </div>
+//   );
+// };
 
 export default VideoCard;

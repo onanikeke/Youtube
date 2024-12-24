@@ -6,6 +6,7 @@ import store from "./utils/appStore";
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/Watchpage";
+import "remixicon/fonts/remixicon.css";
 
 function App() {
   const appRouter = createBrowserRouter([
