@@ -3,10 +3,11 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { MdKeyboardVoice } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { useState } from "react";
 import { YOUTUBE_SEARCH_URL } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,12 +15,20 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   // This is what debouncing is... it is a technique to delay the execution of a function until after some time has passed since the last time it was called.
 
+  const cache = useSelector((store) => store.search);
+  console.log(cache);
+  // console.log(cache);
   useEffect(() => {
     // console.log(searchQuery);
-    const timer = setTimeout(() => SearchQuerySuggestion(), 200);
-    return () => {
-      clearTimeout(timer);
-    };
+    if (cache[searchQuery] != null) {
+      setSuggestions(cache[searchQuery]);
+    } else {
+      const timer = setTimeout(() => SearchQuerySuggestion(), 200);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
   }, [searchQuery]);
 
   const SearchQuerySuggestion = async () => {
@@ -27,7 +36,9 @@ const Header = () => {
     const json = await data.json();
     // console.log(json);
     setSuggestions(json[1]);
-    console.log(suggestions);
+
+    // console.log(suggestions);
+    dispatch(cacheResults({ [searchQuery]: json[1] }));
   };
 
   const dispatch = useDispatch();
