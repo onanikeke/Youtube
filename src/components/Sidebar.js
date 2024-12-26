@@ -17,7 +17,7 @@ const Sidebar = () => {
   // console.log(isMenuOpen);
   return (
     isMenuOpen && (
-      <div className="w-48 m-2 ">
+      <div className="w-48 m-2">
         <ul className="text-sm font-normal ">
           <li className="flex items-center gap-4 text-xl py-2 px-2 rounded-xl hover:bg-[#868484] hover:cursor-pointer">
             <IoMdHome />
@@ -82,10 +82,6 @@ const Sidebar = () => {
           <li className="flex items-center gap-4 text-xl py-2 px-2 rounded-xl hover:bg-[#868484] ">
             <FaUserCircle />
             <p className="text-sm">T-series</p>
-          </li>
-          <li className="flex items-center gap-4 text-xl py-2 px-2 rounded-xl hover:bg-[#868484]">
-            <FaUserCircle />
-            <p className="text-sm">Carry Minati</p>
           </li>
           <li className="flex items-center gap-4 text-xl py-2 px-2 rounded-xl hover:bg-[#868484]">
             <FaUserCircle />

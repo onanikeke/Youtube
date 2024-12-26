@@ -8,6 +8,7 @@ import { toggleMenu } from "../utils/appSlice";
 import { useState } from "react";
 import { YOUTUBE_SEARCH_URL } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,7 +17,6 @@ const Header = () => {
   // This is what debouncing is... it is a technique to delay the execution of a function until after some time has passed since the last time it was called.
 
   const cache = useSelector((store) => store.search);
-  console.log(cache);
   // console.log(cache);
   useEffect(() => {
     // console.log(searchQuery);
@@ -46,7 +46,7 @@ const Header = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col p-4 my-2 -mt-2 shadow-lg ">
+    <div className="grid grid-flow-col p-4 my-2 -mt-2 shadow-lg  ">
       <div className="flex col-span-2 items-center gap-4">
         <img
           onClick={handleTogglemenu}
@@ -54,6 +54,7 @@ const Header = () => {
           alt="hem"
           src="https://cdn-icons-png.flaticon.com/128/7710/7710488.png"
         />
+
         <img
           className="w-16"
           alt="yt_logo"
