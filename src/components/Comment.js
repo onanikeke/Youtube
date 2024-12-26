@@ -1,7 +1,7 @@
 import React from "react";
 
 const Comment = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const { name, text, replies, profilePic } = data;
 
   return (
