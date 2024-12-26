@@ -23,7 +23,7 @@ const VideoContainer = () => {
       {/* {videos[0] && <HighOrderComponent info={videos[0]} />} */}
       {videos.length > 0 &&
         videos.map((video) => (
-          <Link key={video.id} to={"/watch/" + video.id}>
+          <Link key={video.id} to={"/watch?v=" + video.id}>
             <VideoCard videoInfo={video} />
           </Link>
         ))}

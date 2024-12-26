@@ -8,7 +8,7 @@ import { toggleMenu } from "../utils/appSlice";
 import { useState } from "react";
 import { YOUTUBE_SEARCH_URL } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +17,8 @@ const Header = () => {
   // This is what debouncing is... it is a technique to delay the execution of a function until after some time has passed since the last time it was called.
 
   const cache = useSelector((store) => store.search);
+  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // console.log(cache);
   useEffect(() => {
     // console.log(searchQuery);
@@ -55,11 +57,13 @@ const Header = () => {
           src="https://cdn-icons-png.flaticon.com/128/7710/7710488.png"
         />
 
-        <img
-          className="w-16"
-          alt="yt_logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/9/90/Logo_of_YouTube_%282013-2015%29.svg"
-        />
+        <Link to="/">
+          <img
+            className="w-16"
+            alt="yt_logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/90/Logo_of_YouTube_%282013-2015%29.svg"
+          />
+        </Link>
       </div>
       <div className="col-span-8 ">
         <div
@@ -75,7 +79,9 @@ const Header = () => {
             placeholder="Search"
           />
           <button className="border-[1px] border-gray-400 rounded-r-full px-4 py-2 bg-gray-200">
-            <CiSearch />
+            <Link to={"/search?q=" + searchQuery}>
+              <CiSearch />
+            </Link>
           </button>
           <button>
             <p className=" ml-4 text-2xl border-[1px] p-1 rounded-full bg-gray-200">
@@ -85,13 +91,17 @@ const Header = () => {
         </div>
         {showSuggestions && (
           <div className="absolute w-[25.5rem] ml-[9.9rem] mt-1 bg-white rounded-lg overflow-hidden shadow-inner">
-            {suggestions.map((sugges) => (
+            {suggestions.map((suggestion) => (
               <h2
-                key={sugges}
+                key={suggestion}
+                onMouseDown={() => {
+                  setSearchQuery(suggestion);
+                  navigate("/search?q=" + suggestion);
+                }}
                 className="px-2 py-3 shadow-inner hover:bg-gray-100"
               >
                 <i class="ri-search-line mr-3"></i>
-                {sugges}
+                {suggestion}
               </h2>
             ))}
           </div>
